@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -82,10 +82,14 @@ exports.createSchemaCustomization = ({ actions }) => {
   // This way the "MarkdownRemark" queries will return `null` even when no
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
+    type Site implements Node {
+      siteMetadata: SiteSiteMetadata!
+    }
+
     type SiteSiteMetadata {
-      author: Author
-      siteUrl: String
-      social: Social
+      author: Author!
+      siteUrl: String!
+      social: Social!
     }
 
     type Author {
@@ -103,13 +107,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
-      title: String
+      title: String!
       description: String
-      date: Date @dateformat
+      date: Date! @dateformat
     }
 
     type Fields {
-      slug: String
+      slug: String!
     }
   `)
 }

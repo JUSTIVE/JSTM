@@ -1,0 +1,41 @@
+{
+  "name": "gatsby-starter-milk",
+  "reason": {
+    "react-jsx": 3
+  },
+  "suffix": ".bs.js",
+  "refmt": 3,
+  "bs-dependencies": [
+    "@rescript/react",
+    "@reasonml-community/graphql-ppx"
+  ],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "module": "es6",
+    "importPath": "relative",
+    "generatedFileExtension": ".gen.tsx",
+    "debug": {
+      "all": true,
+      "basic": false
+    }
+  },
+  "ppx-flags": [
+    [
+      "@reasonml-community/graphql-ppx/ppx",
+      "-template-tag=graphql",
+      "-fragment-in-query=exclude"
+    ]
+  ]
+}
