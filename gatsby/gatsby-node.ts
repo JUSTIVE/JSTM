@@ -1,7 +1,9 @@
+import type { CreateNodeArgs, CreatePagesArgs, CreateSchemaCustomizationArgs } from "gatsby"
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
   const { createPage } = actions
 
   // Define a template for blog post
@@ -34,7 +36,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = (result.data as { allMarkdownRemark: GatsbyTypes.MarkdownRemarkConnection }).allMarkdownRemark.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -46,7 +48,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
-        path: post.fields.slug,
+        path: post.fields!.slug,
         component: blogPost,
         context: {
           id: post.id,
@@ -58,7 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode }: CreateNodeArgs) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
@@ -72,7 +74,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs) => {
   const { createTypes } = actions
 
   // Explicitly define the siteMetadata {} object

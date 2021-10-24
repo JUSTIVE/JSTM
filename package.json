@@ -35,11 +35,15 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-typescript": "^7.15.8",
     "@graphql-cli/codegen": "^2.1.1",
     "@graphql-codegen/cli": "^2.1.1",
     "@graphql-codegen/introspection": "^2.1.0",
     "@reasonml-community/graphql-ppx": "^1.2.2",
     "@types/react": "^17.0.20",
+    "babel-preset-gatsby-package": "^2.0.0",
     "gentype": "^4.1.0",
     "rescript": "^9.1.4",
     "typescript": "^4.4.2"
@@ -55,10 +59,11 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
+    "prepare-gatsby": "babel gatsby -d . -x .ts,.tsx --presets gatsby-package",
+    "prebuild": "yarn prepare-gatsby",
     "build": "gatsby build",
-    "dev": "gatsby develop",
+    "dev": "yarn prepare-gatsby && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
