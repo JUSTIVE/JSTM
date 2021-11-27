@@ -8,6 +8,9 @@
   Gatsby's blog starter + ReScript
 </h1>
 
+Yet-another
+![static blog with 3 posts](./img/landing.png)
+
 My ReScript port of `gatsby-starter-blog`.
 
 ## 🚀 Development
