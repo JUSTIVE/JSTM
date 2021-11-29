@@ -31,7 +31,7 @@ let make = () => {
   <div>
     <ProfileImage />
     <div>
-      {React.string("Written by")}
+      {React.string("Written by ")}
       {switch Js.Nullable.toOption(author.name) {
       | Some(name) => <strong> {React.string(name)} </strong>
       | None => React.null

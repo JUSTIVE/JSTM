@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `JUSTIE ME`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Kim min sang`,
+      summary: `\`새로움에 친숙한\`. 새로운 기술을 배우는 데에 있어 부담이 없으며, 최근 대두되고 있는 함수형 프로그래밍 패러다임을 이용해 본 경험이 있고, 모르는 내용은 찾아 배우고, 아는 내용은 주위 사람들에게 알려줌으로써 '배워서 남 주자'를 지향하고 있습니다.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `kim's blog`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      github: 'JUSTIVE'
     },
   },
   plugins: [
